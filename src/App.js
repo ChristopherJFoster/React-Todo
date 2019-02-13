@@ -32,9 +32,10 @@ class App extends React.Component {
   };
 
   // SYNTAX??
-  markCompleted = e => {
+  toggleCompleted = e => {
     e.preventDefault();
-    console.log("test");
+    console.log(e.target.id);
+
     if (e.target.completed === false) {
       this.setState({
         [e.target.completed]: true
@@ -51,7 +52,7 @@ class App extends React.Component {
       <div className="container">
         <TodoList
           taskList={this.state.taskList}
-          markCompleted={this.markCompleted}
+          toggleCompleted={this.toggleCompleted}
         />
         <TodoForm
           task={this.state.task}
