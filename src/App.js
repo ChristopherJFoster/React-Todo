@@ -2,11 +2,19 @@ import React from "react";
 import TodoList from "./components/TodoComponents/TodoList";
 import TodoForm from "./components/TodoComponents/TodoForm";
 
+const taskList = [
+  {
+    task: "Organize Garage",
+    id: 1528817077286,
+    completed: false
+  }
+];
+
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      taskList: [],
+      taskList: taskList,
       task: ""
     };
   }
@@ -34,7 +42,11 @@ class App extends React.Component {
   // SYNTAX??
   toggleCompleted = e => {
     e.preventDefault();
-    console.log(e.target.id);
+    const result = this.state.taskList.filter(
+      task => task.id === parseInt(e.target.id, 10)
+    );
+
+    console.log(result);
 
     if (e.target.completed === false) {
       this.setState({
