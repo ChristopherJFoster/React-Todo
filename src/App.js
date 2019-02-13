@@ -2,19 +2,6 @@ import React from "react";
 import TodoList from "./components/TodoComponents/TodoList";
 import TodoForm from "./components/TodoComponents/TodoForm";
 
-// const taskList = [
-//   {
-//     task: "Organize Garage",
-//     id: 1528817077286,
-//     completed: false
-//   },
-//   {
-//     task: "Bake Cookies",
-//     id: 1528817084358,
-//     completed: false
-//   }
-// ];
-
 class App extends React.Component {
   // you will need a place to store your state in this component.
   // design `App` to be the parent component of your application.
@@ -42,9 +29,6 @@ class App extends React.Component {
       completed: false
     };
 
-    console.log(newTask);
-    console.log(`state taskList: ${this.state.taskList}`);
-
     this.setState({
       taskList: [...this.state.taskList, newTask],
       task: ""
@@ -52,7 +36,6 @@ class App extends React.Component {
   };
 
   render() {
-    console.log(`state task: ${this.state.task}`);
     return (
       <div className="container">
         <TodoList taskList={this.state.taskList} />
