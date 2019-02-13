@@ -3,9 +3,6 @@ import TodoList from "./components/TodoComponents/TodoList";
 import TodoForm from "./components/TodoComponents/TodoForm";
 
 class App extends React.Component {
-  // you will need a place to store your state in this component.
-  // design `App` to be the parent component of your application.
-  // this component is going to take care of state, and any change handlers you need to work with your state
   constructor() {
     super();
     this.state = {
@@ -15,7 +12,6 @@ class App extends React.Component {
   }
 
   handleChanges = e => {
-    console.log(`handleChanges: ${e.target.value}`);
     this.setState({
       [e.target.name]: e.target.value
     });
@@ -35,10 +31,28 @@ class App extends React.Component {
     });
   };
 
+  // SYNTAX??
+  markCompleted = e => {
+    e.preventDefault();
+    console.log("test");
+    if (e.target.completed === false) {
+      this.setState({
+        [e.target.completed]: true
+      });
+    } else {
+      this.setState({
+        [e.target.completed]: false
+      });
+    }
+  };
+
   render() {
     return (
       <div className="container">
-        <TodoList taskList={this.state.taskList} />
+        <TodoList
+          taskList={this.state.taskList}
+          markCompleted={this.markCompleted}
+        />
         <TodoForm
           task={this.state.task}
           handleChanges={this.handleChanges}

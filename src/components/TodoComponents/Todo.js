@@ -2,7 +2,7 @@ import React from "react";
 
 function Todo(props) {
   return (
-    <div className="task">
+    <div className="task" onClick={props.markCompleted}>
       <p>{props.task}</p>
     </div>
   );
