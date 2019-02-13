@@ -1,5 +1,6 @@
 import React from "react";
 import TodoList from "./components/TodoComponents/TodoList";
+import TodoForm from "./components/TodoComponents/TodoForm";
 
 const taskList = [
   {
@@ -54,7 +55,8 @@ class App extends React.Component {
     console.log(`state task: ${this.state.task}`);
     return (
       <div className="container">
-        <TodoList
+        <TodoList taskList={this.state.taskList} />
+        <TodoForm
           taskList={this.state.taskList}
           handleChanges={this.handleChanges}
           addTask={this.addTask}
