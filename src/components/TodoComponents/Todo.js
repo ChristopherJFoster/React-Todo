@@ -1,9 +1,12 @@
 import React from "react";
+import "./Todo.css";
 
 function Todo(props) {
   return (
     <div className="task" onClick={props.toggleCompleted}>
-      <p id={props.id}>{props.task}</p>
+      <p completed={props.completed} id={props.id}>
+        {props.task}
+      </p>
     </div>
   );
 }

@@ -39,24 +39,32 @@ class App extends React.Component {
     });
   };
 
-  // SYNTAX??
   toggleCompleted = e => {
     e.preventDefault();
-    const result = this.state.taskList.filter(
+    // const result = this.state.taskList.filter(
+    //   task => task.id === parseInt(e.target.id, 10)
+    // );
+    const index = this.state.taskList.findIndex(
       task => task.id === parseInt(e.target.id, 10)
     );
 
-    console.log(result);
+    const taskList = { ...this.state.taskList };
+    taskList[index].completed = true;
+    //this.setState({ taskList });
 
-    if (e.target.completed === false) {
-      this.setState({
-        [e.target.completed]: true
-      });
-    } else {
-      this.setState({
-        [e.target.completed]: false
-      });
-    }
+    console.log(this.state.taskList[index].completed);
+
+    // if (this.state.taskList[index].completed === false) {
+    //   this.setState({
+    //     [taskList[index].completed]: true
+    //   });
+    // } else {
+    //   this.setState({
+    //     [taskList[index].completed]: false
+    //   });
+    // }
+
+    console.log(this.state.taskList[index].completed);
   };
 
   render() {
