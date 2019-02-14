@@ -4,8 +4,9 @@ import Todo from "./Todo";
 const TodoList = props => {
   return (
     <div className="task-list">
-      {props.taskList.map(item => (
+      {props.taskList.map((item, index) => (
         <Todo
+          listNumber={index + 1}
           task={item.task}
           // Even though id and key are set to same value, both are required since the key property cannot be accessed:
           id={item.id}

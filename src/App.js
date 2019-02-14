@@ -6,12 +6,12 @@ import "./css/main.css";
 // I put this here so I wouldn't have to populate the task list to test code:
 const taskList = [
   {
-    task: "Organize Garage",
+    task: "organize garage",
     id: 1528817077286,
     completed: false
   },
   {
-    task: "Bake Cookies",
+    task: "bake cookies",
     id: 1528817084358,
     completed: false
   }
@@ -36,6 +36,13 @@ class App extends React.Component {
   // Adds a task to the list when a user clicks the "Add Task" button or presses enter:
   addTask = e => {
     e.preventDefault();
+    // User cannot add an empty string to the to-do list:
+    if (!this.state.task) {
+      alert(
+        `If you want to do nothing, just do nothing.\nDon't add "nothing" to your to-do list.`
+      );
+      return;
+    }
     const newTask = {
       task: this.state.task,
       id: Date.now(),
@@ -72,6 +79,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
+        <h1>To-Do List</h1>
         <TodoList
           taskList={this.state.taskList}
           toggleCompleted={this.toggleCompleted}
