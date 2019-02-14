@@ -12,7 +12,9 @@ const TodoForm = props => {
         placeholder="new task"
       />
       <button type="submit">Add Task</button>
-      <button type="button">Clear Completed</button>
+      <button type="button" onClick={props.clearCompleted}>
+        Clear Completed
+      </button>
     </form>
   );
 };

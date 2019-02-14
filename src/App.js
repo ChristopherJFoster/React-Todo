@@ -50,7 +50,7 @@ class App extends React.Component {
   // Toggles the completed property of the task that was clicked:
   toggleCompleted = e => {
     e.preventDefault();
-    // Determines the index of the clicked task object in state based on the id of the clicked task:
+    // Determines the index of the clicked task object in state based on the id of the clicked task (note that parseInt is needed because by the time id is set to an attribute each task, it is a string, whereas the id stored in state is a number):
     const index = this.state.taskList.findIndex(
       task => task.id === parseInt(e.target.id, 10)
     );
@@ -59,6 +59,13 @@ class App extends React.Component {
     // Toggles the "completed" property of the appropriate task (now using ! since its a boolean):
     tempTaskList[index].completed = !tempTaskList[index].completed;
     this.setState(tempTaskList);
+  };
+
+  clearCompleted = e => {
+    e.preventDefault();
+    this.setState({
+      taskList: this.state.taskList.filter(item => !item.completed)
+    });
   };
 
   render() {
@@ -72,6 +79,7 @@ class App extends React.Component {
           task={this.state.task}
           handleChanges={this.handleChanges}
           addTask={this.addTask}
+          clearCompleted={this.clearCompleted}
         />
       </div>
     );
