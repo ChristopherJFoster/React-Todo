@@ -1,6 +1,7 @@
 import React from "react";
 import TodoList from "./components/TodoComponents/TodoList";
 import TodoForm from "./components/TodoComponents/TodoForm";
+import "./css/main.css";
 
 // I put this here so I wouldn't have to populate the task list to test code:
 const taskList = [
