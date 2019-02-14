@@ -56,14 +56,9 @@ class App extends React.Component {
     );
     // From what I can tell, this is required for setting the state of a nested object:
     const tempTaskList = { ...this.state.taskList };
-    // Toggles the "completed" property of the appropriate task:
-    if (this.state.taskList[index].completed === false) {
-      tempTaskList[index].completed = true;
-      this.setState(tempTaskList);
-    } else {
-      tempTaskList[index].completed = false;
-      this.setState(tempTaskList);
-    }
+    // Toggles the "completed" property of the appropriate task (now using ! since its a boolean):
+    tempTaskList[index].completed = !tempTaskList[index].completed;
+    this.setState(tempTaskList);
   };
 
   render() {
