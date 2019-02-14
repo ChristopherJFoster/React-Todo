@@ -2,6 +2,7 @@ import React from "react";
 
 const TodoForm = props => {
   return (
+    // I may have trouble later when I try to add a different onClick to the "Clear Completed" button:
     <form onSubmit={props.addTask}>
       <input
         type="text"
