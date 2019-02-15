@@ -3,27 +3,20 @@ import TodoList from "./components/TodoComponents/TodoList";
 import TodoForm from "./components/TodoComponents/TodoForm";
 import "./css/main.css";
 
-// I put this here so I wouldn't have to populate the task list to test code:
-const taskList = [
-  {
-    task: "organize garage",
-    id: 1528817077286,
-    completed: false
-  },
-  {
-    task: "bake cookies",
-    id: 1528817084358,
-    completed: false
-  }
-];
-
 class App extends React.Component {
   constructor() {
     super();
-    this.state = {
-      taskList: taskList,
-      task: ""
-    };
+    // Retrieved stringified state object from localStorage (if any):
+    const retrievedState = localStorage.getItem("storedState");
+    // Parses state object back to its original formatting:
+    const parsedState = JSON.parse(retrievedState);
+    // Uses state object from localStorage if there is one. If not uses a default state object:
+    parsedState
+      ? (this.state = parsedState)
+      : (this.state = {
+          taskList: [],
+          task: ""
+        });
   }
 
   // Handles changes in the form input box:
@@ -77,6 +70,9 @@ class App extends React.Component {
   };
 
   render() {
+    // Stringifies state and stores it in localStorage on each render. This almost ensures that the stored state will match whatever the state was when the page/app was closed, power went out...:
+    let storedState = this.state;
+    localStorage.setItem("storedState", JSON.stringify(storedState));
     return (
       <div className="container">
         <h1>To-Do List</h1>
